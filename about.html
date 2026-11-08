@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Barat Namazov</title>
+  <meta name="description" content="About Barat Namazov: background, education, skills, interests, and goals.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page-about">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html" aria-label="Barat Namazov, home">BN</a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" aria-current="page">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="about-hero">
+      <div class="container">
+        <p class="welcome">Field journal</p>
+        <h1>About me</h1>
+        <p class="intro">
+          Walk through five notes and stamp each one as you read it. The stamps
+          only record what you have opened. Missing details are marked as placeholders.
+        </p>
+
+        <div class="journal">
+          <div class="journal-top">
+            <p id="journal-count" aria-live="polite">0 of 5 notes collected</p>
+            <div
+              id="journal-progress"
+              class="journal-progress"
+              role="progressbar"
+              aria-label="Notes collected"
+              aria-valuemin="0"
+              aria-valuemax="5"
+              aria-valuenow="0"
+            >
+              <span id="journal-bar"></span>
+            </div>
+          </div>
+
+          <nav aria-label="Journal notes">
+            <ol class="stamp-path">
+              <li>
+                <a class="stamp" href="#background" data-stamp="background">
+                  <span class="stamp-mark" aria-hidden="true">1</span>
+                  <span class="stamp-label">Origin</span>
+                </a>
+              </li>
+              <li>
+                <a class="stamp" href="#education" data-stamp="education">
+                  <span class="stamp-mark" aria-hidden="true">2</span>
+                  <span class="stamp-label">Path</span>
+                </a>
+              </li>
+              <li>
+                <a class="stamp" href="#skills" data-stamp="skills">
+                  <span class="stamp-mark" aria-hidden="true">3</span>
+                  <span class="stamp-label">Craft</span>
+                </a>
+              </li>
+              <li>
+                <a class="stamp" href="#interests" data-stamp="interests">
+                  <span class="stamp-mark" aria-hidden="true">4</span>
+                  <span class="stamp-label">Curiosity</span>
+                </a>
+              </li>
+              <li>
+                <a class="stamp" href="#goals" data-stamp="goals">
+                  <span class="stamp-mark" aria-hidden="true">5</span>
+                  <span class="stamp-label">Direction</span>
+                </a>
+              </li>
+            </ol>
+          </nav>
+
+          <p id="journal-complete" class="journal-complete" hidden>Journal complete. All five notes are stamped.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="note" id="background">
+      <div class="container">
+        <div class="note-head">
+          <div>
+            <p class="note-index">01</p>
+            <h2>My background</h2>
+          </div>
+          <button type="button" class="button button-secondary stamp-button" data-collect="background" aria-pressed="false">Stamp this note</button>
+        </div>
+        <div class="split">
+          <article class="info-card">
+            <h3>Personal introduction</h3>
+            <p>
+              I'm interested in technology, programming, and exploring how digital
+              tools can solve real-world problems. I enjoy learning new skills and
+              building creative projects.
+            </p>
+          </article>
+          <article class="info-card">
+            <h3>Educational background</h3>
+            <p class="placeholder">"My educational journey began at Secondary School No. 248, where I completed my secondary education. I am currently a second-year undergraduate student at ADA University, majoring in Electrical and Electronics Engineering. I am particularly interested in technology, engineering, robotics, and understanding how complex systems work."</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="note" id="education">
+      <div class="container">
+        <div class="note-head">
+          <div>
+            <p class="note-index">02</p>
+            <h2>My education</h2>
+          </div>
+          <button type="button" class="button button-secondary stamp-button" data-collect="education" aria-pressed="false">Stamp this note</button>
+        </div>
+        <p class="section-lead">Select a stop to open it. Names and years are placeholders.</p>
+        <ol class="timeline">
+          <li class="timeline-item">
+            <button type="button" class="timeline-toggle" aria-expanded="false" aria-controls="stop-1">
+              <span class="timeline-year">Year: 2014-2025</span>
+              <span class="timeline-title">Institution: Secondary School No. 248</span>
+            </button>
+            <div class="timeline-panel" id="stop-1" aria-hidden="true">
+              <div class="timeline-panel-inner">
+                <p class="placeholder">Degree: Secondary School</p>
+              </div>
+            </div>
+          </li>
+          <li class="timeline-item">
+            <button type="button" class="timeline-toggle" aria-expanded="false" aria-controls="stop-2">
+              <span class="timeline-year">Year: 2025-2029 (In Progress)</span>
+              <span class="timeline-title">Institution: ADA University</span>
+            </button>
+            <div class="timeline-panel" id="stop-2" aria-hidden="true">
+              <div class="timeline-panel-inner">
+                <p class="placeholder">Degree: Bachelor's Degree</p>
+                <p class="placeholder">Program: Electrical and Electronics Engineering</p>
+                <p class="placeholder">Status: Currently a second-year undergraduate student.</p>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="note" id="skills">
+      <div class="container">
+        <div class="note-head">
+          <div>
+            <p class="note-index">03</p>
+            <h2>My skills</h2>
+          </div>
+          <button type="button" class="button button-secondary stamp-button" data-collect="skills" aria-pressed="false">Stamp this note</button>
+        </div>
+        <p class="section-lead">Select a card to pin it.</p>
+        <div class="card-grid">
+          <button type="button" class="skill-card" data-open-note="skills" aria-pressed="false">
+            <svg class="ring" viewBox="0 0 72 72" aria-hidden="true">
+              <circle class="ring-track" cx="36" cy="36" r="28"></circle>
+              <circle class="ring-value" cx="36" cy="36" r="28"></circle>
+            </svg>
+            <span class="card-title">Skill 1</span>
+            <span class="skill-level">Breadboard & Logic Gates</span>
+            <span class="placeholder">Building and testing basic electronic circuits using breadboards and AND, OR, NOT, and XOR logic gates.</span>
+          </button>
+          <button type="button" class="skill-card" data-open-note="skills" aria-pressed="false">
+            <svg class="ring" viewBox="0 0 72 72" aria-hidden="true">
+              <circle class="ring-track" cx="36" cy="36" r="28"></circle>
+              <circle class="ring-value" cx="36" cy="36" r="28"></circle>
+            </svg>
+            <span class="card-title">Skill 2</span>
+            <span class="skill-level">Hour of AI</span>
+            <span class="placeholder">Demonstrating Hour of AI activities to students and introducing them to artificial intelligence through interactive learning.</span>
+          </button>
+          <button type="button" class="skill-card" data-open-note="skills" aria-pressed="false">
+            <svg class="ring" viewBox="0 0 72 72" aria-hidden="true">
+              <circle class="ring-track" cx="36" cy="36" r="28"></circle>
+              <circle class="ring-value" cx="36" cy="36" r="28"></circle>
+            </svg>
+            <span class="card-title">Skill 3</span>
+            <span class="skill-level">Robotics & Algorithms</span>
+            <span class="placeholder">Programming robots to follow specific algorithms and draw different shapes by executing a sequence of commands.</span>
+          </button>
+          <button type="button" class="skill-card" data-open-note="skills" aria-pressed="false">
+            <svg class="ring" viewBox="0 0 72 72" aria-hidden="true">
+              <circle class="ring-track" cx="36" cy="36" r="28"></circle>
+              <circle class="ring-value" cx="36" cy="36" r="28"></circle>
+            </svg>
+            <span class="card-title">Skill 4</span>
+            <span class="skill-level">Website Development</span>
+            <span class="placeholder">Creating personal websites using HTML, CSS, and JavaScript.</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="note" id="interests">
+      <div class="container">
+        <div class="note-head">
+          <div>
+            <p class="note-index">04</p>
+            <h2>My interests</h2>
+          </div>
+          <button type="button" class="button button-secondary stamp-button" data-collect="interests" aria-pressed="false">Stamp this note</button>
+        </div>
+        <p class="section-lead">Select a card to pin it.</p>
+        <div class="card-grid">
+          <button type="button" class="interest-card" data-open-note="interests" aria-pressed="false">
+            <span class="interest-icon" aria-hidden="true">💻</span>
+            <span class="card-title">Software & Hardware Technology</span>
+            <span class="placeholder">I enjoy exploring how software and hardware work together, understanding computer systems, and experimenting with different technologies.</span>
+          </button>
+          <button type="button" class="interest-card" data-open-note="interests" aria-pressed="false">
+            <span class="interest-icon" aria-hidden="true">✈️</span>
+            <span class="card-title">Automotive & Aerospace Engineering</span>
+            <span class="placeholder">I am fascinated by car engines, mechanical systems, and the engineering principles behind automobiles and aircraft.</span>
+          </button>
+          <button type="button" class="interest-card" data-open-note="interests" aria-pressed="false">
+            <span class="interest-icon" aria-hidden="true">🌌</span>
+            <span class="card-title">Space & Astronomy</span>
+            <span class="placeholder">I am passionate about exploring the mysteries of the universe, especially black holes, stars, galaxies, and fascinating phenomena in outer space.</span>
+          </button>
+          <button type="button" class="interest-card" data-open-note="interests" aria-pressed="false">
+            <span class="interest-icon" aria-hidden="true">🏎️</span>
+            <span class="card-title">Racing & Motorsport</span>
+            <span class="placeholder">I enjoy racing and motorsports, particularly the combination of speed, engineering, technology, and performance.</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="note" id="goals">
+      <div class="container">
+        <div class="note-head">
+          <div>
+            <p class="note-index">05</p>
+            <h2>My goals</h2>
+          </div>
+          <button type="button" class="button button-secondary stamp-button" data-collect="goals" aria-pressed="false">Stamp this note</button>
+        </div>
+        <div class="split">
+          <article class="goal-card">
+            <h3>Become a Skilled Engineer</h3>
+            <p class="placeholder">My goal is to develop strong knowledge and practical skills in electrical and electronics engineering and become a successful engineer.</p>
+          </article>
+          <article class="goal-card">
+            <h3>Explore Advanced Technologies</h3>
+            <p class="placeholder">I want to deepen my understanding of software, hardware, artificial intelligence, robotics, and modern technological systems.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>Barat Namazov</p>
+      <a class="github-link" href="https://github.com/SONIC012912" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"></path>
+        </svg>
+        GitHub
+      </a>
+    </div>
+  </footer>
+
+  <script src="js/about.js"></script>
+</body>
+</html>
