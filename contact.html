@@ -6,6 +6,15 @@
   <title>Contact | Barat Namazov</title>
   <meta name="description" content="Contact Barat Namazov.">
   <link rel="stylesheet" href="css/styles.css">
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("field-notes-theme") === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      } catch (error) {}
+    })();
+  </script>
 </head>
 <body class="page-contact">
   <header class="site-header">
@@ -19,6 +28,7 @@
           <li><a href="contact.html" aria-current="page">Contact</a></li>
         </ul>
       </nav>
+      <button type="button" class="theme-toggle" aria-pressed="false">Dark</button>
     </div>
   </header>
 
@@ -48,5 +58,6 @@
       </a>
     </div>
   </footer>
+  <script src="js/effects.js"></script>
 </body>
 </html>

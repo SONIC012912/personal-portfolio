@@ -6,6 +6,15 @@
   <title>About | Barat Namazov</title>
   <meta name="description" content="About Barat Namazov: background, education, skills, interests, and goals.">
   <link rel="stylesheet" href="css/styles.css">
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("field-notes-theme") === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      } catch (error) {}
+    })();
+  </script>
 </head>
 <body class="page-about">
   <header class="site-header">
@@ -19,6 +28,7 @@
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
+      <button type="button" class="theme-toggle" aria-pressed="false">Dark</button>
     </div>
   </header>
 
@@ -274,6 +284,7 @@
     </div>
   </footer>
 
+  <script src="js/effects.js"></script>
   <script src="js/about.js"></script>
 </body>
 </html>

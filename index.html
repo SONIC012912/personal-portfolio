@@ -6,6 +6,15 @@
   <title>Barat Namazov | Portfolio</title>
   <meta name="description" content="Portfolio of Barat Namazov. A short welcome, an introduction, and links to the rest of the site.">
   <link rel="stylesheet" href="css/styles.css">
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("field-notes-theme") === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      } catch (error) {}
+    })();
+  </script>
 </head>
 <body>
   <header class="site-header">
@@ -19,6 +28,7 @@
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
+      <button type="button" class="theme-toggle" aria-pressed="false">Dark</button>
     </div>
   </header>
 
@@ -62,5 +72,6 @@
       </a>
     </div>
   </footer>
+  <script src="js/effects.js"></script>
 </body>
 </html>

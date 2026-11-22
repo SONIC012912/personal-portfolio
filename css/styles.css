@@ -163,7 +163,7 @@ h1 {
   border: 1.5px solid #1c3d34;
   text-decoration: none;
   font-weight: 600;
-  transition: transform 160ms ease, background-color 160ms ease, color 160ms ease;
+  transition: transform 300ms ease, background-color 300ms ease, color 300ms ease, border-color 300ms ease;
 }
 
 .button-primary {
@@ -185,8 +185,8 @@ h1 {
   color: #f4efe4;
 }
 
-.button:hover {
-  transform: translateY(-2px);
+.github-link {
+  transition: color 300ms ease, transform 300ms ease;
 }
 
 .site-footer {
@@ -444,7 +444,7 @@ html:has(.page-about) {
 .info-card,
 .goal-card {
   padding: 18px;
-  transition: transform 180ms ease;
+  transition: transform 300ms ease;
 }
 
 .info-card p,
@@ -539,13 +539,7 @@ html:has(.page-about) {
   align-items: flex-start;
   gap: 8px;
   min-height: 100%;
-  transition: transform 180ms ease, border-color 180ms ease;
-}
-
-.skill-card:hover,
-.interest-card:hover,
-.goal-card:hover {
-  transform: translateY(-3px);
+  transition: transform 300ms ease, border-color 300ms ease;
 }
 
 .skill-card[aria-pressed="true"],
@@ -669,12 +663,7 @@ html:has(.page-about) {
   border: 1px solid #e3d5c0;
   border-radius: 22px;
   overflow: hidden;
-  transition: transform 180ms ease, border-color 180ms ease;
-}
-
-.project-card:hover {
-  transform: translateY(-4px);
-  border-color: #1c3d34;
+  transition: transform 300ms ease, border-color 300ms ease;
 }
 
 .project-photo {
@@ -774,4 +763,354 @@ html:has(.page-about) {
   .project-card:hover {
     transform: none;
   }
+}
+
+/*
+  Motion
+  Entrance uses the translate property so card hover can still use transform.
+  The glass highlight is positioned by js/effects.js.
+*/
+
+.portrait,
+.journal,
+.timeline-toggle,
+.info-card,
+.goal-card,
+.skill-card,
+.interest-card,
+.project-card {
+  position: relative;
+  transition: transform 300ms ease, border-color 300ms ease;
+}
+
+.portrait::after,
+.journal::after,
+.timeline-toggle::after,
+.info-card::after,
+.goal-card::after,
+.skill-card::after,
+.interest-card::after,
+.project-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    200px circle at var(--shine-x, 50%) var(--shine-y, 50%),
+    rgba(255, 255, 255, 0.34),
+    rgba(255, 255, 255, 0.08) 32%,
+    transparent 62%
+  );
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+}
+
+.portrait.is-lit::after,
+.journal.is-lit::after,
+.timeline-toggle.is-lit::after,
+.info-card.is-lit::after,
+.goal-card.is-lit::after,
+.skill-card.is-lit::after,
+.interest-card.is-lit::after,
+.project-card.is-lit::after {
+  opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button:hover,
+  .github-link:hover {
+    transform: translateY(-3px);
+  }
+
+  .portrait:hover,
+  .journal:hover,
+  .timeline-toggle:hover,
+  .info-card:hover,
+  .goal-card:hover,
+  .skill-card:hover,
+  .interest-card:hover {
+    transform: translateY(-4px) scale(1.04);
+    border-color: #1c3d34;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px) scale(1.03);
+    border-color: #1c3d34;
+  }
+}
+
+@media (hover: none) {
+  .button:active,
+  .portrait:active,
+  .timeline-toggle:active,
+  .info-card:active,
+  .goal-card:active,
+  .skill-card:active,
+  .interest-card:active,
+  .project-card:active {
+    transform: translateY(-2px) scale(1.02);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .portrait,
+  .hero-copy,
+  .about-hero .welcome,
+  .about-hero h1,
+  .about-hero .intro,
+  .journal,
+  .note,
+  .projects-hero .welcome,
+  .projects-hero h1,
+  .projects-hero .intro,
+  .project-card {
+    animation: rise-in 560ms ease backwards;
+  }
+
+  .hero-copy,
+  .about-hero h1,
+  .projects-hero h1 {
+    animation-delay: 70ms;
+  }
+
+  .about-hero .intro,
+  .projects-hero .intro {
+    animation-delay: 140ms;
+  }
+
+  .journal {
+    animation-delay: 200ms;
+  }
+
+  .note:nth-child(2) { animation-delay: 80ms; }
+  .note:nth-child(3) { animation-delay: 150ms; }
+  .note:nth-child(4) { animation-delay: 220ms; }
+  .note:nth-child(5) { animation-delay: 290ms; }
+  .note:nth-child(6) { animation-delay: 360ms; }
+
+  .project-card:nth-child(1) { animation-delay: 180ms; }
+  .project-card:nth-child(2) { animation-delay: 260ms; }
+  .project-card:nth-child(3) { animation-delay: 340ms; }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    translate: 0 12px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portrait,
+  .hero-copy,
+  .about-hero .welcome,
+  .about-hero h1,
+  .about-hero .intro,
+  .journal,
+  .note,
+  .projects-hero .welcome,
+  .projects-hero h1,
+  .projects-hero .intro,
+  .project-card,
+  .button,
+  .github-link,
+  .skill-card,
+  .interest-card,
+  .info-card,
+  .goal-card,
+  .timeline-toggle,
+  .portrait::after,
+  .journal::after,
+  .timeline-toggle::after,
+  .info-card::after,
+  .goal-card::after,
+  .skill-card::after,
+  .interest-card::after,
+  .project-card::after {
+    animation: none;
+    transition: none;
+  }
+
+  .button:hover,
+  .github-link:hover,
+  .portrait:hover,
+  .journal:hover,
+  .timeline-toggle:hover,
+  .info-card:hover,
+  .goal-card:hover,
+  .skill-card:hover,
+  .interest-card:hover,
+  .project-card:hover,
+  .button:active,
+  .project-card:active,
+  .theme-toggle {
+    transform: none;
+  }
+}
+
+.theme-toggle {
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1.5px solid #f4efe4;
+  background: transparent;
+  color: #f4efe4;
+  transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease;
+}
+
+.theme-toggle:hover,
+.theme-toggle[aria-pressed="true"] {
+  background: #e8a317;
+  border-color: #e8a317;
+  color: #1c241c;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] body {
+  background: #121a17;
+  color: #f4efe4;
+}
+
+html[data-theme="dark"] .site-header {
+  background: #0c1411;
+}
+
+html[data-theme="dark"] .portrait,
+html[data-theme="dark"] .project-photo {
+  background: #24302c;
+  color: #d7cec2;
+}
+
+html[data-theme="dark"] .portrait svg {
+  fill: #3c4944;
+}
+
+html[data-theme="dark"] .welcome,
+html[data-theme="dark"] .note-index,
+html[data-theme="dark"] .timeline-year,
+html[data-theme="dark"] .skill-level,
+html[data-theme="dark"] .project-kicker,
+html[data-theme="dark"] .skill-label {
+  color: #e8a317;
+}
+
+html[data-theme="dark"] .intro,
+html[data-theme="dark"] .section-lead,
+html[data-theme="dark"] .placeholder,
+html[data-theme="dark"] .stamp,
+html[data-theme="dark"] .project-body > p:not(.project-kicker):not(.skill-label) {
+  color: #d7cec2;
+}
+
+html[data-theme="dark"] .button {
+  border-color: #e8a317;
+}
+
+html[data-theme="dark"] .button-primary {
+  background: #e8a317;
+  color: #1c241c;
+}
+
+html[data-theme="dark"] .button-primary:hover {
+  background: #f0c14a;
+}
+
+html[data-theme="dark"] .button-secondary {
+  color: #f4efe4;
+}
+
+html[data-theme="dark"] .button-secondary:hover {
+  background: #e8a317;
+  color: #1c241c;
+}
+
+html[data-theme="dark"] .site-footer {
+  border-top-color: #3e5148;
+}
+
+html[data-theme="dark"] .github-link {
+  color: #f4efe4;
+}
+
+html[data-theme="dark"] .github-link:hover {
+  color: #e8a317;
+}
+
+html[data-theme="dark"] .journal,
+html[data-theme="dark"] .info-card,
+html[data-theme="dark"] .goal-card,
+html[data-theme="dark"] .skill-card,
+html[data-theme="dark"] .interest-card,
+html[data-theme="dark"] .timeline-toggle,
+html[data-theme="dark"] .project-card {
+  background: #1b2420;
+  border-color: #3e5148;
+}
+
+html[data-theme="dark"] .journal-progress {
+  background: #31403a;
+}
+
+html[data-theme="dark"] #journal-bar {
+  background: #e8a317;
+}
+
+html[data-theme="dark"] .stamp-mark {
+  border-color: #8a7d6c;
+  color: #f4efe4;
+}
+
+html[data-theme="dark"] .journal-complete {
+  color: #f4efe4;
+}
+
+html[data-theme="dark"] .page-about .stamp-button[aria-pressed="true"] {
+  background: #e8a317;
+  border-color: #e8a317;
+  color: #1c241c;
+}
+
+html[data-theme="dark"] .timeline::before {
+  background: #3e5148;
+}
+
+html[data-theme="dark"] .timeline-item::after {
+  background: #121a17;
+  box-shadow: inset 0 0 0 2px #e8a317;
+}
+
+html[data-theme="dark"] .skill-card[aria-pressed="true"],
+html[data-theme="dark"] .interest-card[aria-pressed="true"] {
+  background: #24302b;
+  border-color: #e8a317;
+}
+
+html[data-theme="dark"] .ring-track {
+  stroke: #3e5148;
+}
+
+html[data-theme="dark"] .ring-value {
+  stroke: #8a7d6c;
+}
+
+html[data-theme="dark"] .project-photo svg,
+html[data-theme="dark"] .interest-icon {
+  stroke: #e8a317;
+}
+
+html[data-theme="dark"] .skill-tags li {
+  border-color: #e8a317;
+  color: #f4efe4;
 }
