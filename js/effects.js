@@ -39,60 +39,60 @@
   }
 })();
 
-// Tracks a soft highlight under the pointer on cards.
-// Touch screens skip this, because there is no cursor to follow.
+// Shows a back-to-top button after the page has moved down, then returns to the top.
 (function () {
-  var motionOk = window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
-  var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  var button = document.querySelector(".back-to-top");
 
-  if (!motionOk || !finePointer) {
+  if (!button) {
     return;
   }
 
-  var cards = document.querySelectorAll(
-    ".project-card, .skill-card, .interest-card, .info-card, .goal-card, .journal, .timeline-toggle, .portrait"
-  );
+  var footer = document.querySelector(".site-footer");
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var gap = 20;
 
-  cards.forEach(function (card) {
-    var frame = 0;
-    var latest = null;
+  function place() {
+    var lift = gap;
 
-    card.addEventListener("pointermove", function (event) {
-      if (event.pointerType === "touch") {
-        return;
+    if (footer) {
+      var rect = footer.getBoundingClientRect();
+      var covering = window.innerHeight - rect.top;
+
+      if (covering > 0) {
+        lift = covering + gap;
       }
-
-      latest = event;
-
-      if (frame) {
-        return;
-      }
-
-      frame = window.requestAnimationFrame(function () {
-        frame = 0;
-
-        if (!latest) {
-          return;
-        }
-
-        var rect = card.getBoundingClientRect();
-        if (!rect.width || !rect.height) {
-          return;
-        }
-
-        var x = ((latest.clientX - rect.left) / rect.width) * 100;
-        var y = ((latest.clientY - rect.top) / rect.height) * 100;
-        card.style.setProperty("--shine-x", x.toFixed(1) + "%");
-        card.style.setProperty("--shine-y", y.toFixed(1) + "%");
-        card.classList.add("is-lit");
-      });
-    });
-
-    function clearShine() {
-      card.classList.remove("is-lit");
     }
 
-    card.addEventListener("pointerleave", clearShine);
-    card.addEventListener("pointercancel", clearShine);
+    button.style.bottom = lift + "px";
+  }
+
+  function update() {
+    var show = window.scrollY >= 300;
+    button.classList.toggle("is-visible", show);
+
+    if (show) {
+      button.removeAttribute("aria-hidden");
+      button.removeAttribute("tabindex");
+    } else {
+      button.setAttribute("aria-hidden", "true");
+      button.setAttribute("tabindex", "-1");
+
+      if (document.activeElement === button) {
+        button.blur();
+      }
+    }
+
+    place();
+  }
+
+  button.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: reduceMotion.matches ? "auto" : "smooth"
+    });
   });
+
+  update();
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", place);
 })();

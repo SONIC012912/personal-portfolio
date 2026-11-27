@@ -594,6 +594,14 @@ html:has(.page-about) {
   transition: transform 400ms ease;
 }
 
+.interest-photo-tall {
+  object-position: center 56%;
+}
+
+.interest-photo-racing {
+  object-position: center 40%;
+}
+
 .page-about button:focus-visible,
 .page-about a:focus-visible {
   outline: 2px solid #e8a317;
@@ -671,6 +679,7 @@ html:has(.page-about) {
   border: 1px solid #e3d5c0;
   border-radius: 22px;
   overflow: hidden;
+  cursor: pointer;
   transition: transform 300ms ease, border-color 300ms ease;
 }
 
@@ -699,6 +708,43 @@ html:has(.page-about) {
 
 .project-photo p {
   margin: 0;
+}
+
+.project-card > .project-photo {
+  aspect-ratio: 1 / 1;
+  min-height: 0;
+  height: auto;
+  align-self: start;
+  box-sizing: border-box;
+}
+
+.project-photo-real {
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  background: transparent;
+}
+
+.project-card .project-photo-real img,
+.project-modal-cover.project-photo-real img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.project-modal-cover.project-photo-real {
+  aspect-ratio: 16 / 10;
+  height: auto;
+  min-height: 0;
+  display: block;
+  padding: 0;
 }
 
 .project-body {
@@ -745,8 +791,312 @@ html:has(.page-about) {
   font-size: 0.92rem;
 }
 
+.project-open {
+  margin-top: 18px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #8a5a12;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.projects-hero .section-lead {
+  margin-top: 14px;
+}
+
+.project-modal {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 20px 16px;
+  border: 0;
+  background: transparent;
+  color: #1c241c;
+}
+
+.project-modal[open] {
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+}
+
+.project-modal::backdrop {
+  background: rgba(12, 20, 17, 0.62);
+}
+
+.project-modal-panel {
+  width: min(820px, 100%);
+  justify-self: center;
+  align-self: center;
+  margin: 0;
+  padding: 0;
+  max-height: 100%;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scroll-snap-type: y proximity;
+  border: 1px solid #e3d5c0;
+  border-radius: 22px;
+  background: #fffdf8;
+  position: relative;
+}
+
+.project-modal-tools {
+  position: sticky;
+  top: 14px;
+  z-index: 5;
+  height: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-right: 14px;
+  pointer-events: none;
+}
+
+.project-modal-hero {
+  position: sticky;
+  top: 0;
+  z-index: 0;
+}
+
+.project-modal-hero .project-kicker {
+  position: absolute;
+  top: 18px;
+  left: 22px;
+  z-index: 2;
+  margin: 0;
+  color: #e8a317;
+  text-shadow: 0 1px 8px rgba(12, 20, 17, 0.55);
+}
+
+.project-modal-sheet {
+  position: relative;
+  z-index: 1;
+  scroll-snap-align: start;
+  margin-top: -32px;
+  padding: 32px 22px 28px;
+  border-radius: 22px 22px 0 0;
+  background: #fffdf8;
+  box-shadow: 0 -18px 40px rgba(12, 20, 17, 0.22);
+}
+
+.project-modal-close {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  pointer-events: auto;
+  border-radius: 50%;
+  border: 1.5px solid #e8a317;
+  background: rgba(28, 61, 52, 0.78);
+  backdrop-filter: blur(10px);
+  color: #f4efe4;
+  box-shadow: 0 8px 20px rgba(12, 20, 17, 0.28);
+  cursor: pointer;
+}
+
+.project-modal-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.project-modal-close:focus-visible {
+  outline: 2px solid #e8a317;
+  outline-offset: 3px;
+}
+
+.project-modal h2 {
+  margin: 0 0 16px;
+  padding-right: 56px;
+}
+
+.project-modal h3 {
+  margin: 22px 0 8px;
+  font-size: 1.05rem;
+  color: #1c3d34;
+}
+
+.project-modal p:not(.project-kicker):not(.modal-placeholder) {
+  margin: 0;
+  line-height: 1.65;
+  color: #3d463c;
+}
+
+.project-modal .project-modal-cover {
+  min-height: 0;
+  margin: 0;
+  border-radius: 22px 22px 0 0;
+  background: #1c3d34;
+  box-shadow: none;
+  color: #f4efe4;
+}
+
+.project-modal .project-modal-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(12, 20, 17, 0.62) 0%, rgba(12, 20, 17, 0.12) 36%, transparent 62%);
+}
+
+.project-modal .project-modal-cover svg {
+  stroke: #f4efe4;
+}
+
+.gate-list {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gate-list li {
+  padding: 12px 14px;
+  border: 1px solid #e3d5c0;
+  border-radius: 14px;
+  background: #f8f1df;
+  line-height: 1.55;
+}
+
+.gate-list strong {
+  color: #1c3d34;
+}
+
+.project-modal .modal-placeholder {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border: 1px dashed #c4b49a;
+  border-radius: 12px;
+  color: #5c5346;
+}
+
+.modal-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.modal-gallery .project-photo {
+  min-height: 120px;
+  border-radius: 14px;
+}
+
+.modal-gallery .project-photo-real {
+  aspect-ratio: 16 / 9;
+  min-height: 0;
+  padding: 0;
+}
+
+.modal-gallery .project-photo-real img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+html.modal-open {
+  overflow: hidden;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-modal-close:hover {
+    background: #e8a317;
+    color: #1c241c;
+  }
+}
+
+@media (max-width: 720px) {
+  .project-modal {
+    padding: 10px;
+  }
+
+  .project-modal-sheet {
+    padding: 24px 16px 22px;
+  }
+
+  .project-modal-hero .project-kicker {
+    top: 16px;
+    left: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .project-modal[open] .project-modal-panel {
+    animation: modal-in 300ms ease;
+  }
+
+  .project-modal[open]::backdrop {
+    animation: backdrop-in 300ms ease;
+  }
+
+  .project-modal.is-closing .project-modal-panel {
+    animation: modal-out 220ms ease forwards;
+  }
+
+  .project-modal.is-closing::backdrop {
+    animation: backdrop-out 220ms ease forwards;
+  }
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    translate: 0 16px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes modal-out {
+  from {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  to {
+    opacity: 0;
+    translate: 0 12px;
+  }
+}
+
+@keyframes backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes backdrop-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
 .contact-link-row {
   margin-top: 24px;
+}
+
+@media (min-width: 721px) {
+  .project-card > .project-photo {
+    aspect-ratio: auto;
+    align-self: stretch;
+    height: 100%;
+    min-height: 100%;
+  }
+
+  .project-card .project-photo-real img {
+    object-fit: cover;
+    object-position: center center;
+  }
 }
 
 @media (max-width: 720px) {
@@ -758,8 +1108,20 @@ html:has(.page-about) {
     grid-template-columns: 1fr;
   }
 
+  .project-card > .project-photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    justify-self: stretch;
+    align-self: stretch;
+  }
+
+  .project-card .project-photo-real img {
+    object-fit: cover;
+    object-position: center center;
+  }
+
   .project-photo {
-    min-height: 180px;
+    min-height: 0;
   }
 }
 
@@ -776,7 +1138,6 @@ html:has(.page-about) {
 /*
   Motion
   Entrance uses the translate property so card hover can still use transform.
-  The glass highlight is positioned by js/effects.js.
 */
 
 .portrait,
@@ -788,6 +1149,7 @@ html:has(.page-about) {
 .interest-card,
 .project-card {
   position: relative;
+  overflow: hidden;
   transition: transform 300ms ease, border-color 300ms ease;
 }
 
@@ -801,28 +1163,24 @@ html:has(.page-about) {
 .project-card::after {
   content: "";
   position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(
-    200px circle at var(--shine-x, 50%) var(--shine-y, 50%),
-    rgba(255, 255, 255, 0.34),
-    rgba(255, 255, 255, 0.08) 32%,
-    transparent 62%
+  z-index: 2;
+  top: 0;
+  left: -20%;
+  width: 46%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.1) 46%,
+    rgba(255, 255, 255, 0.62) 50%,
+    rgba(255, 255, 255, 0.1) 54%,
+    transparent 60%,
+    transparent 100%
   );
+  transform: translate(-140%, 90%) rotate(32deg);
   opacity: 0;
-  transition: opacity 300ms ease;
   pointer-events: none;
-}
-
-.portrait.is-lit::after,
-.journal.is-lit::after,
-.timeline-toggle.is-lit::after,
-.info-card.is-lit::after,
-.goal-card.is-lit::after,
-.skill-card.is-lit::after,
-.interest-card.is-lit::after,
-.project-card.is-lit::after {
-  opacity: 1;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -850,6 +1208,17 @@ html:has(.page-about) {
     transform: translateY(-4px) scale(1.03);
     border-color: #1c3d34;
   }
+
+  .portrait:hover::after,
+  .journal:hover::after,
+  .timeline-toggle:hover::after,
+  .info-card:hover::after,
+  .goal-card:hover::after,
+  .skill-card:hover::after,
+  .interest-card:hover::after,
+  .project-card:hover::after {
+    animation: glass-sweep 760ms ease forwards;
+  }
 }
 
 @media (hover: none) {
@@ -862,6 +1231,17 @@ html:has(.page-about) {
   .interest-card:active,
   .project-card:active {
     transform: translateY(-2px) scale(1.02);
+  }
+
+  .portrait:active::after,
+  .journal:active::after,
+  .timeline-toggle:active::after,
+  .info-card:active::after,
+  .goal-card:active::after,
+  .skill-card:active::after,
+  .interest-card:active::after,
+  .project-card:active::after {
+    animation: glass-sweep 760ms ease forwards;
   }
 }
 
@@ -936,15 +1316,7 @@ html:has(.page-about) {
   .interest-card,
   .info-card,
   .goal-card,
-  .timeline-toggle,
-  .portrait::after,
-  .journal::after,
-  .timeline-toggle::after,
-  .info-card::after,
-  .goal-card::after,
-  .skill-card::after,
-  .interest-card::after,
-  .project-card::after {
+  .timeline-toggle {
     animation: none;
     transition: none;
   }
@@ -965,6 +1337,47 @@ html:has(.page-about) {
   .interest-photo img,
   .interest-card:hover .interest-photo img {
     transform: none;
+  }
+
+  .portrait::after,
+  .journal::after,
+  .timeline-toggle::after,
+  .info-card::after,
+  .goal-card::after,
+  .skill-card::after,
+  .interest-card::after,
+  .project-card::after,
+  .portrait:hover::after,
+  .journal:hover::after,
+  .timeline-toggle:hover::after,
+  .info-card:hover::after,
+  .goal-card:hover::after,
+  .skill-card:hover::after,
+  .interest-card:hover::after,
+  .project-card:hover::after {
+    animation: none;
+    opacity: 0;
+    transform: translate(-140%, 90%) rotate(32deg);
+  }
+}
+
+@keyframes glass-sweep {
+  0% {
+    transform: translate(-140%, 90%) rotate(32deg);
+    opacity: 0;
+  }
+
+  14% {
+    opacity: 1;
+  }
+
+  72% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(380%, -180%) rotate(32deg);
+    opacity: 0;
   }
 }
 
@@ -1005,6 +1418,16 @@ html[data-theme="dark"] .portrait,
 html[data-theme="dark"] .project-photo {
   background: #24302c;
   color: #d7cec2;
+}
+
+html[data-theme="dark"] .project-card > .project-photo-real {
+  background: transparent;
+}
+
+html[data-theme="dark"] .project-modal .project-modal-cover {
+  background: #0e1916;
+  box-shadow: none;
+  color: #f4efe4;
 }
 
 html[data-theme="dark"] .portrait svg {
@@ -1130,4 +1553,130 @@ html[data-theme="dark"] .interest-photo {
 html[data-theme="dark"] .skill-tags li {
   border-color: #e8a317;
   color: #f4efe4;
+}
+
+html[data-theme="dark"] .portrait::after,
+html[data-theme="dark"] .journal::after,
+html[data-theme="dark"] .timeline-toggle::after,
+html[data-theme="dark"] .info-card::after,
+html[data-theme="dark"] .goal-card::after,
+html[data-theme="dark"] .skill-card::after,
+html[data-theme="dark"] .interest-card::after,
+html[data-theme="dark"] .project-card::after {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 42%,
+    rgba(245, 166, 35, 0.08) 47%,
+    rgba(255, 244, 214, 0.42) 50%,
+    rgba(245, 166, 35, 0.08) 53%,
+    transparent 58%,
+    transparent 100%
+  );
+}
+
+.back-to-top {
+  --back-size: 46px;
+  position: fixed;
+  z-index: 30;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: 20px;
+  width: var(--back-size);
+  height: var(--back-size);
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid #f5a623;
+  border-radius: 50%;
+  background: #1c3d34;
+  color: #f5a623;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  box-shadow: none;
+  transition: opacity 300ms ease, visibility 300ms ease, transform 300ms ease, box-shadow 300ms ease, bottom 300ms ease;
+}
+
+.back-to-top svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.back-to-top:focus-visible {
+  outline: 2px solid #f5a623;
+  outline-offset: 3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .back-to-top:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 4px rgba(245, 166, 35, 0.22), 0 8px 18px rgba(245, 166, 35, 0.38);
+  }
+}
+
+@media (hover: none) {
+  .back-to-top:active {
+    transform: scale(1.04);
+  }
+}
+
+@media (max-width: 720px) {
+  .back-to-top {
+    --back-size: 44px;
+    right: max(14px, env(safe-area-inset-right));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top,
+  .back-to-top:hover,
+  .back-to-top:active {
+    transition: none;
+    transform: none;
+  }
+}
+
+html[data-theme="dark"] .project-modal {
+  color: #f4efe4;
+}
+
+html[data-theme="dark"] .project-modal-panel,
+html[data-theme="dark"] .project-modal-sheet {
+  background: #1b2420;
+  border-color: #3e5148;
+}
+
+html[data-theme="dark"] .project-modal-sheet {
+  box-shadow: 0 -16px 36px rgba(0, 0, 0, 0.38);
+}
+
+html[data-theme="dark"] .project-modal h3,
+html[data-theme="dark"] .gate-list strong {
+  color: #f4efe4;
+}
+
+html[data-theme="dark"] .project-modal p:not(.project-kicker):not(.modal-placeholder),
+html[data-theme="dark"] .project-modal .modal-placeholder {
+  color: #d7cec2;
+}
+
+html[data-theme="dark"] .gate-list li {
+  background: #24302b;
+  border-color: #3e5148;
+}
+
+html[data-theme="dark"] .project-modal .modal-placeholder {
+  border-color: #8a7d6c;
+}
+
+html[data-theme="dark"] .project-open {
+  color: #e8a317;
 }
